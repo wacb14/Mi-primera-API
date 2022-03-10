@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TodoApi.BusinessService.Interfaces;
 using TodoApi.DataService.Interfaces;
+using TodoApi.Models;
 
 namespace TodoApi
 {

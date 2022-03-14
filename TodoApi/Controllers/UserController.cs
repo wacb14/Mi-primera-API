@@ -2,23 +2,42 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using TodoApi.BusinessService;
 using TodoApi.BusinessService.Interfaces;
 using TodoApi.Models;
 
 namespace TodoApi.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
         private IUserBusinessService _userBusinessService;
-        public UserController(IUserBusinessService userBusinessService)
+        private IJWTManagerRepository _jwtManagerRepository;
+        public UserController(IUserBusinessService userBusinessService, IJWTManagerRepository jwtManagerRepository)
         {
             _userBusinessService = userBusinessService;
+            _jwtManagerRepository = jwtManagerRepository;
         }
+
+        [AllowAnonymous]
+        [HttpPost("[action]")]
+        public ActionResult login(User user)
+        {
+            try{
+                return Ok(_jwtManagerRepository.GetToken(user));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("[action]")]
         public ActionResult GetAll()
         {

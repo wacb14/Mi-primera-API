@@ -38,6 +38,7 @@ namespace TodoApi.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("[action]")]
         public ActionResult GetAll()
         {

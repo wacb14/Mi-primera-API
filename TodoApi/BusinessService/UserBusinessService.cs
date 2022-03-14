@@ -1,29 +1,37 @@
 using System.Collections.Generic;
+using AutoMapper;
 using TodoApi.BusinessService.Interfaces;
 using TodoApi.DataService.Interfaces;
 using TodoApi.Models;
+using TodoApi.ViewModels;
 
 namespace TodoApi
 {
     public class UserBusinessService : IUserBusinessService
     {
         private IUserDataService _userBusinessService;
-        public UserBusinessService(IUserDataService userBusinessService)
+        private IMapper _mapper;
+        public UserBusinessService(IUserDataService userBusinessService, IMapper mapper)
         {
             _userBusinessService = userBusinessService;
+            _mapper = mapper;
         }
-        public List<User> GetAllUsers()
+        public List<UserViewModel> GetAllUsers()
         {
-            return _userBusinessService.GetAllUsers();
+            var userList =_userBusinessService.GetAllUsers();
+            var usersViewModelList = _mapper.Map<List<UserViewModel>>(userList);
+            return usersViewModelList;
         }
-        public User Create(User user)
+        public UserViewModel Create(User user)
         {
-            return _userBusinessService.Create(user);
+            var userTemp = _userBusinessService.Create(user);
+            return _mapper.Map<UserViewModel>(userTemp);
 
         }
-        public User Update(int id, User user)
+        public UserViewModel Update(int id, User user)
         {
-            return _userBusinessService.Update(id, user);
+            var userTemp = _userBusinessService.Update(id, user);
+            return _mapper.Map<UserViewModel>(userTemp);
         }
         public int DeleteById(int id)
         {

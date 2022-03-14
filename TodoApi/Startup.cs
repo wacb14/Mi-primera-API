@@ -19,6 +19,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using TodoApi.BusinessService;
+using AutoMapper;
+
 
 namespace TodoApi
 {
@@ -38,7 +40,7 @@ namespace TodoApi
             services.AddControllers();
             services.AddTransient<IUserDataService, UserDataService>();
             services.AddTransient<IUserBusinessService, UserBusinessService>();
-            services.AddTransient<IJWTManagerRepository,JWTManagerRepository>();
+            services.AddTransient<IJWTManagerRepository, JWTManagerRepository>();
 
             services.AddDbContext<GeneralContext>(opt =>
                 opt.UseMySQL("server=localhost;database=User;user=root;password=Uno2345678_9"));
@@ -70,27 +72,27 @@ namespace TodoApi
             });
 
             // BEARER PARA EL SWAGGER
-           services.AddSwaggerGen(swagger =>
-            {
+            services.AddSwaggerGen(swagger =>
+             {
                 //This is to generate the Default UI of Swagger Documentation
                 swagger.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "ASP.NET 5 Web API",
-                    Description = "Authentication and Authorization in ASP.NET 5 with JWT and Swagger"
-                });
+                 {
+                     Version = "v1",
+                     Title = "ASP.NET 5 Web API",
+                     Description = "Authentication and Authorization in ASP.NET 5 with JWT and Swagger"
+                 });
                 // To Enable authorization using Swagger (JWT)
                 swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-                {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer",
-                    BearerFormat = "JWT",
-                    In = ParameterLocation.Header,
-                    Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
-                });
-                swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
+                 {
+                     Name = "Authorization",
+                     Type = SecuritySchemeType.ApiKey,
+                     Scheme = "Bearer",
+                     BearerFormat = "JWT",
+                     In = ParameterLocation.Header,
+                     Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
+                 });
+                 swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
+                 {
                     {
                         new OpenApiSecurityScheme
                         {
@@ -103,9 +105,16 @@ namespace TodoApi
                     new string[] {}
 
                     }
-                });
-            });
+                 });
+             });
 
+            // Mapping configuration
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());//Agregamos la configuracion del archivo que esta en MODELS
+            });
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

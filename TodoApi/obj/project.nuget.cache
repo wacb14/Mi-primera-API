@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eOMV1an1cDR9hXKZaEejcFy//v4d2MX29JVRpm46cBowSuZ2ivkbF8WxHrOBQ8sFfsQEQTAJlbu4QihPf3+miQ==",
+  "dgSpecHash": "EswInl6OjaS6tCBhFTRsAASkbnqPSOUTXZD27EggSHH1UP9mXtrvFnq6/G84FkzakhW2UrO3rBDh1sT89NnlAQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ald\\Desktop\\Mi primera API\\TodoApi\\TodoApi.csproj",
+  "projectFilePath": "C:\\Users\\Ald\\OneDrive\\EF Core Dotnet\\Mi primera API\\TodoApi\\TodoApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ald\\.nuget\\packages\\automapper\\7.0.1\\automapper.7.0.1.nupkg.sha512",
     "C:\\Users\\Ald\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\5.0.1\\automapper.extensions.microsoft.dependencyinjection.5.0.1.nupkg.sha512",

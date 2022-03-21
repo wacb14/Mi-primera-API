@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ald\\Desktop\\Mi primera API\\TodoApi\\TodoApi.csproj": {}
+    "C:\\Users\\Ald\\OneDrive\\EF Core Dotnet\\Mi primera API\\TodoApi\\TodoApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ald\\Desktop\\Mi primera API\\TodoApi\\TodoApi.csproj": {
+    "C:\\Users\\Ald\\OneDrive\\EF Core Dotnet\\Mi primera API\\TodoApi\\TodoApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ald\\Desktop\\Mi primera API\\TodoApi\\TodoApi.csproj",
+        "projectUniqueName": "C:\\Users\\Ald\\OneDrive\\EF Core Dotnet\\Mi primera API\\TodoApi\\TodoApi.csproj",
         "projectName": "TodoApi",
-        "projectPath": "C:\\Users\\Ald\\Desktop\\Mi primera API\\TodoApi\\TodoApi.csproj",
+        "projectPath": "C:\\Users\\Ald\\OneDrive\\EF Core Dotnet\\Mi primera API\\TodoApi\\TodoApi.csproj",
         "packagesPath": "C:\\Users\\Ald\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ald\\Desktop\\Mi primera API\\TodoApi\\obj\\",
+        "outputPath": "C:\\Users\\Ald\\OneDrive\\EF Core Dotnet\\Mi primera API\\TodoApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ald\\AppData\\Roaming\\NuGet\\NuGet.Config",
